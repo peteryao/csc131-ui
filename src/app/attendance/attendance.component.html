@@ -1,12 +1,22 @@
-<p>
-  attendance works!
-</p>
-<form>
-  <md-input-container>
-    <input mdInput placeholder="Student ID" value="">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput placeholder="Daily Key" value="">
-  </md-input-container>
-  <button md-raised-button>Submit</button>
+<form [formGroup]="form">
+  <p>
+    <md-input-container>
+      <input mdInput placeholder="Student ID" formControlName="studentId">
+      <md-error class="text-danger">
+        Student Id must be 9 digits long
+      </md-error>
+    </md-input-container>
+  </p>
+  <p>
+    <md-input-container>
+      <input mdInput placeholder="Daily Key" formControlName="passKey">
+      <md-error class="text-danger">
+        PassKey required
+      </md-error>
+    </md-input-container>
+  </p>
+  <div>
+    <button type="button" md-raised-button (click)="resetForm()">Reset</button>
+    <button md-raised-button (click)="submitForm()" [disabled]="!form.valid">Submit</button>
+  </div>
 </form>

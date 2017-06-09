@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomMaterialModuleModule } from './custom-material-module/custom-material-module.module';
 
@@ -27,6 +28,8 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     CustomMaterialModuleModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
