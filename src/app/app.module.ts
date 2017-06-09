@@ -10,9 +10,17 @@ import { AppComponent } from './app.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { HomeComponent } from './home/home.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { StudentComponent } from './student/student.component';
+import { StudentService } from './student.service'
 
 const appRoutes: Routes = [
-  { path: 'student', component: AttendanceComponent },
+  { path: 'student', component: StudentComponent,
+    children: [
+      { path: '', redirectTo: 'attendance', pathMatch: 'full' },
+      { path: 'attendance', component: AttendanceComponent },
+      { path: 'confirmation', component: ConfirmationComponent }
+    ]},
   { path: 'teacher', component: TeacherComponent },
   { path: '', component: HomeComponent },
 ];
@@ -22,7 +30,9 @@ const appRoutes: Routes = [
     AppComponent,
     AttendanceComponent,
     TeacherComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmationComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +42,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
