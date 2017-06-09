@@ -1,14 +1,14 @@
 <!--The whole content below can be removed with the new code.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
+  <md-toolbar color="primary">
+    <span> Attendance Tracker </span>
+  </md-toolbar>
 </div>
-<div>
+<div style="margin: 20px;">
   <button md-raised-button routerLink="/">Home</button>
   <button md-raised-button (click)="studentClick()" routerLink="/student">Student</button>
   <button md-raised-button routerLink="/teacher">Teacher</button>
 </div>
-<div>
+<div fxFlayout="row" fxLayoutAlign="center center">
   <router-outlet></router-outlet>
 </div>

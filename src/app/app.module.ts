@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { CustomMaterialModuleModule } from './custom-material-module/custom-material-module.module';
 
 import { AppComponent } from './app.component';
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     CustomMaterialModuleModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
