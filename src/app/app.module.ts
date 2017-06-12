@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -14,7 +15,8 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { HomeComponent } from './home/home.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { StudentComponent } from './student/student.component';
-import { StudentService } from './student.service'
+import { StudentService } from './student.service';
+import { SheetService } from './sheet.service';
 
 const appRoutes: Routes = [
   { path: 'student', component: StudentComponent,
@@ -42,10 +44,11 @@ const appRoutes: Routes = [
     CustomMaterialModuleModule,
     FlexLayoutModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [StudentService],
+  providers: [StudentService, SheetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
