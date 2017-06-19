@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { StudentService } from '../student.service';
-import { SheetService } from '../sheet.service';
 
 @Component({
   selector: 'app-attendance',
@@ -17,7 +16,6 @@ export class AttendanceComponent implements OnInit {
   constructor(
     private _router: Router,
     private _studentService: StudentService,
-    private _sheetService: SheetService
     ) { }
 
   ngOnInit() {
@@ -27,7 +25,6 @@ export class AttendanceComponent implements OnInit {
   public submitForm(): void {
     console.log(this.form.value);
     this._studentService.studentId = this.form.value.studentId;
-    this._sheetService.getStudents().forEach((value) => console.log(value));
     this._router.navigate(['student/confirmation']);
   }
 

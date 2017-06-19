@@ -16,7 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { StudentComponent } from './student/student.component';
 import { StudentService } from './student.service';
-import { SheetService } from './sheet.service';
+import { AttendanceService } from './attendance.service';
 
 const appRoutes: Routes = [
   { path: 'student', component: StudentComponent,
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [StudentService, SheetService],
+  providers: [StudentService, AttendanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
