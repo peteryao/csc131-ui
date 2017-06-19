@@ -43,4 +43,10 @@ export class TeacherComponent implements OnInit {
       passKey: new FormControl('', Validators.required)
     })
   }
+
+  public randomKey(): void {
+    // Generate a random key of length 5
+    const random = Math.random().toString(36).substring(2, 7);
+    this.form.controls['passKey'].setValue(random);
+  }
 }
