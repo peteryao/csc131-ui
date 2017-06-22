@@ -12,6 +12,8 @@ export class TeacherComponent implements OnInit {
 
   public form: FormGroup;
   public key: string;
+  private validTeacher: boolean;
+  private password: string;
 
   constructor( private attendanceService: AttendanceService ) {};
 
@@ -48,5 +50,11 @@ export class TeacherComponent implements OnInit {
     // Generate a random key of length 5
     const random = Math.random().toString(36).substring(2, 7);
     this.form.controls['passKey'].setValue(random);
+  }
+
+  private checkTeacher(): void {
+    if (this.password === 'root') {
+      this.validTeacher = true;
+    }
   }
 }

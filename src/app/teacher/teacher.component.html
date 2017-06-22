@@ -1,6 +1,14 @@
 <p>
   Teacher
 </p>
+<div *ngIf="!validTeacher">
+  <md-input-container>
+  <input mdInput placeholder="Teacher Password" [(ngModel)]="password">
+  </md-input-container>
+  <button md-raised-button (click)="checkTeacher()">Login</button>
+</div>
+
+<div *ngIf="validTeacher">
 <p> Please submit a form key </p>
 
 <form [formGroup]="form">
@@ -21,3 +29,4 @@
 
 <button md-raised-button (click)="getCurrentKey()">Get Current Key</button>
 <div *ngIf="key !== null">{{key}}</div>
+</div>

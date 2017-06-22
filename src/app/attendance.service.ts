@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Jsonp } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -8,28 +8,33 @@ import 'rxjs/add/operator/map';
 export class AttendanceService {
   private restUrl = 'https://attend-rest.herokuapp.com';
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private jsonp: Jsonp) {}
 
   getKey(): Observable<JSON> {
-    console.log('read here');
     return this.http
                .get(this.restUrl + '/key')
-               .map( response => response.json().data);
+               .map((response) => response.json());
   }
 
   setKey(key: string): Observable<JSON> {
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.restUrl + '/key', {key: key}, options)
+    return this.http.post(this.restUrl + '/key', {key: key, password: 'root'}, options)
                     .map( response => response.json().data);
   }
 
-  submitAttendance(key: string, studentId: string): Observable<JSON> {
+  submitAttendance(key: string, studentId: string, sectionId: number): Observable<JSON> {
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.restUrl + '/submit', {key: key, student_id: studentId}, options)
-                    .map( response => response.json().data);
+    console.log(key, studentId, sectionId);
+
+    return this.http.post(this.restUrl + '/submit',
+      {
+        key: key,
+        student_id: '' + studentId + '',
+        worksheet: sectionId
+      }, options).map( response => response.json());
   }
 }

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -17,13 +17,15 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { StudentComponent } from './student/student.component';
 import { StudentService } from './student.service';
 import { AttendanceService } from './attendance.service';
+import { SectionComponent } from './section/section.component';
 
 const appRoutes: Routes = [
   { path: 'student', component: StudentComponent,
     children: [
-      { path: '', redirectTo: 'attendance', pathMatch: 'full' },
+      { path: '', redirectTo: 'section', pathMatch: 'full' },
       { path: 'attendance', component: AttendanceComponent },
-      { path: 'confirmation', component: ConfirmationComponent }
+      { path: 'confirmation', component: ConfirmationComponent },
+      { path: 'section', component: SectionComponent },
     ]},
   { path: 'teacher', component: TeacherComponent },
   { path: '', component: HomeComponent },
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     TeacherComponent,
     HomeComponent,
     ConfirmationComponent,
-    StudentComponent
+    StudentComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],

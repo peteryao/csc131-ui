@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { StudentService } from '../student.service';
+import { AttendanceService } from '../attendance.service';
 
 @Component({
   selector: 'app-attendance',
@@ -16,6 +17,7 @@ export class AttendanceComponent implements OnInit {
   constructor(
     private _router: Router,
     private _studentService: StudentService,
+    private _attendanceService: AttendanceService
     ) { }
 
   ngOnInit() {
@@ -25,6 +27,15 @@ export class AttendanceComponent implements OnInit {
   public submitForm(): void {
     console.log(this.form.value);
     this._studentService.studentId = this.form.value.studentId;
+    this._attendanceService.submitAttendance(
+        this.form.controls['passKey'].value,
+        this.form.controls['studentId'].value,
+        this._studentService.section
+        ).subscribe((response) => {
+          console.log(response);
+          this._studentService.name = response['name'];
+          this._studentService.studentId = this.form.controls['studentId'].value;
+        });
     this._router.navigate(['student/confirmation']);
   }
 
