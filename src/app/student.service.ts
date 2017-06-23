@@ -9,7 +9,7 @@ export class StudentService {
   constructor() {
     this.studentId = 999999999;
     this.section = 0;
-    this.name = '';
+    this.name = 'temp';
   }
 
 }

@@ -33,10 +33,11 @@ export class AttendanceComponent implements OnInit {
         this._studentService.section
         ).subscribe((response) => {
           console.log(response);
-          this._studentService.name = response['name'];
+          console.log(response.name);
+          this._studentService.name = String(response.name);
           this._studentService.studentId = this.form.controls['studentId'].value;
+          this._router.navigate(['student/confirmation']);
         });
-    this._router.navigate(['student/confirmation']);
   }
 
   public resetForm(): void {

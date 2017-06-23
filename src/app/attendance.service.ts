@@ -24,7 +24,7 @@ export class AttendanceService {
                     .map( response => response.json().data);
   }
 
-  submitAttendance(key: string, studentId: string, sectionId: number): Observable<JSON> {
+  submitAttendance(key: string, studentId: string, sectionId: number): Observable<any> {
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
 
