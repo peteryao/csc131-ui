@@ -14,6 +14,7 @@ export class TeacherComponent implements OnInit {
 
   public form: FormGroup;
   public key: string;
+  public section: number;
   public validTeacher: boolean;
   public password: string;
 
@@ -37,7 +38,8 @@ export class TeacherComponent implements OnInit {
   public submitForm(): void {
     console.log(this.form.value);
     this.key = this.form.controls['passKey'].value;
-    this.attendanceService.setKey(this.key).subscribe((response) => {
+    this.section = this.form.controls['sectionNumber'].value;
+    this.attendanceService.setKey(this.key, this.section).subscribe((response) => {
       console.log(response);
     });
   }

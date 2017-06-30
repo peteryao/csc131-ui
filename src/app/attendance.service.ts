@@ -16,13 +16,11 @@ export class AttendanceService {
                .map((response) => response.json());
   }
 
-  setKey(key: string): Observable<JSON> {
+  setKey(key: string, section: number): Observable<JSON> {
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
 
-    this.http.post(this.restUrl + '/key', {key: key, password: 'root', worksheet: 2}, options);
-
-    return this.http.post(this.restUrl + '/key', {key: key, password: 'root', worksheet: 1}, options)
+    return this.http.post(this.restUrl + '/key', {key: key, password: 'root', worksheet: Number(section)}, options)
                     .map( response => response.json().data);
   }
 
