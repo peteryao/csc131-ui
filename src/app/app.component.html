@@ -1,14 +1,19 @@
 <!--The whole content below can be removed with the new code.-->
 <div style="text-align:center">
   <md-toolbar color="primary">
-    <span> Attendance Tracker </span>
+      <span (click)="returnHome()"> Attendance Tracker </span>
   </md-toolbar>
 </div>
 <md-progress-bar mode="indeterminate" *ngIf="loadingService.isLoading"></md-progress-bar>
-<div style="margin: 20px;">
-  <button md-raised-button routerLink="/">Home</button>
-  <button md-raised-button (click)="studentClick()" routerLink="/student">Student</button>
-  <button md-raised-button routerLink="/teacher">Teacher</button>
+<div style="margin: 20px;" *ngIf="isHome()">
+  <md-grid-list cols="2">
+    <md-grid-tile>
+      <button md-raised-button (click)="studentClick()" routerLink="/student">Student</button>
+    </md-grid-tile>
+    <md-grid-tile>
+      <button md-raised-button routerLink="/teacher">Teacher</button>
+    </md-grid-tile>
+  </md-grid-list>
 </div>
 <div fxFlayout="row" fxLayoutAlign="center center">
   <router-outlet></router-outlet>
