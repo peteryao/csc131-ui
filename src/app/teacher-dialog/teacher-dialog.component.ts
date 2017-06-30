@@ -19,7 +19,6 @@ export class TeacherDialogComponent implements OnInit {
     const keyResponse = this.attendanceService.getKey().subscribe((res) => {
       for (const section in res) {
         if (res.hasOwnProperty(section)) {
-          console.log(section);
           this.keyList.push([this.determineSection(section), res[section]]);
         }
       }

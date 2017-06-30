@@ -1,7 +1,7 @@
-<h1> Current Active Key</h1>
+<h2> Current Active Key</h2>
 <div *ngFor="let item of keyList">
-  <div>
-    <span>{{item[0]}}</span>
-    <div style="padding-left:20px;">{{item[1]}}</div>
+  <div *ngIf="item[1]" fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxFlex="40%"><b>{{item[0]}}</b></div>
+    <div fxFlex="40%"><h2>{{item[1]}}</h2></div>
   </div>
 </div>
