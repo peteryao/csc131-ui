@@ -18,6 +18,8 @@ import { StudentComponent } from './student/student.component';
 import { StudentService } from './student.service';
 import { AttendanceService } from './attendance.service';
 import { SectionComponent } from './section/section.component';
+import { TeacherDialogComponent } from './teacher-dialog/teacher-dialog.component';
+import { TeacherService } from './teacher.service'
 
 const appRoutes: Routes = [
   { path: 'student', component: StudentComponent,
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     HomeComponent,
     ConfirmationComponent,
     StudentComponent,
-    SectionComponent
+    SectionComponent,
+    TeacherDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [StudentService, AttendanceService],
-  bootstrap: [AppComponent]
+  providers: [StudentService, AttendanceService, TeacherService],
+  bootstrap: [AppComponent],
+  entryComponents: [TeacherDialogComponent]
 })
 export class AppModule { }

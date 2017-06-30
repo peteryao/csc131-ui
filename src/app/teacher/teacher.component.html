@@ -3,7 +3,7 @@
 </p>
 <div *ngIf="!validTeacher">
   <md-input-container>
-  <input mdInput placeholder="Teacher Password" [(ngModel)]="password">
+  <input mdInput placeholder="Teacher Password" [(ngModel)]="password" type="password">
   </md-input-container>
   <button md-raised-button (click)="checkTeacher()">Login</button>
 </div>
@@ -20,13 +20,22 @@
       </md-error>
     </md-input-container>
   </p>
+  <p>
+    <md-input-container>
+      <input mdInput placeholder="Section" formControlName="sectionNumber">
+      <md-error class="text-danger">
+        PassKey required
+      </md-error>
+    </md-input-container>
+  </p>
   <div>
     <button type="button" md-raised-button (click)="randomKey()">Random</button>
     <button type="button" md-raised-button (click)="resetForm()">Reset</button>
     <button md-raised-button (click)="submitForm()" [disabled]="!form.valid">Submit</button>
   </div>
 </form>
-
-<button md-raised-button (click)="getCurrentKey()">Get Current Key</button>
-<div *ngIf="key !== null">{{key}}</div>
+</div>
+<div>
+  <button md-raised-button (click)="getCurrentKey()">Get Current Key</button>
+  <div *ngIf="key !== null">{{key}}</div>
 </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { AttendanceService } from '../attendance.service';
+import { TeacherDialogComponent } from '../teacher-dialog/teacher-dialog.component';
 
 @Component({
   selector: 'app-teacher',
@@ -12,10 +14,10 @@ export class TeacherComponent implements OnInit {
 
   public form: FormGroup;
   public key: string;
-  private validTeacher: boolean;
-  private password: string;
+  public validTeacher: boolean;
+  public password: string;
 
-  constructor( private attendanceService: AttendanceService ) {};
+  constructor( private attendanceService: AttendanceService, public dialog: MdDialog ) {};
 
   ngOnInit() {
     this.initializeForm();
@@ -26,6 +28,10 @@ export class TeacherComponent implements OnInit {
      console.log(term);
      this.key = term['key'];
    });
+   const dialogRef = this.dialog.open(TeacherDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('closed');
+    });
   }
 
   public submitForm(): void {
@@ -42,7 +48,8 @@ export class TeacherComponent implements OnInit {
 
   private initializeForm(): void {
     this.form = new FormGroup({
-      passKey: new FormControl('', Validators.required)
+      passKey: new FormControl('', Validators.required),
+      sectionNumber: new FormControl('', Validators.required)
     })
   }
 
@@ -52,7 +59,7 @@ export class TeacherComponent implements OnInit {
     this.form.controls['passKey'].setValue(random);
   }
 
-  private checkTeacher(): void {
+  public checkTeacher(): void {
     if (this.password === 'root') {
       this.validTeacher = true;
     }

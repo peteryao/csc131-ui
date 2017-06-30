@@ -20,21 +20,23 @@ export class AttendanceService {
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.restUrl + '/key', {key: key, password: 'root'}, options)
+    this.http.post(this.restUrl + '/key', {key: key, password: 'root', worksheet: 2}, options);
+
+    return this.http.post(this.restUrl + '/key', {key: key, password: 'root', worksheet: 1}, options)
                     .map( response => response.json().data);
   }
 
-  submitAttendance(key: string, studentId: string, sectionId: number): Observable<any> {
+  submitAttendance(key: string, studentId: string, sectionId: number, lat: number, long: number): Observable<any> {
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });
-
-    console.log(key, studentId, sectionId);
 
     return this.http.post(this.restUrl + '/submit',
       {
         key: key,
         student_id: '' + studentId + '',
-        worksheet: sectionId
+        worksheet: sectionId,
+        lat: lat,
+        long: long
       }, options).map( response => response.json());
   }
 }

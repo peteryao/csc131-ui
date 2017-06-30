@@ -13,12 +13,14 @@ import { AttendanceService } from '../attendance.service';
 export class AttendanceComponent implements OnInit {
 
   public form: FormGroup;
+  private latitude;
+  private longitude;
 
   constructor(
     private _router: Router,
     private _studentService: StudentService,
     private _attendanceService: AttendanceService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -27,17 +29,11 @@ export class AttendanceComponent implements OnInit {
   public submitForm(): void {
     console.log(this.form.value);
     this._studentService.studentId = this.form.value.studentId;
-    this._attendanceService.submitAttendance(
-        this.form.controls['passKey'].value,
-        this.form.controls['studentId'].value,
-        this._studentService.section
-        ).subscribe((response) => {
-          console.log(response);
-          console.log(response.name);
-          this._studentService.name = String(response.name);
-          this._studentService.studentId = this.form.controls['studentId'].value;
-          this._router.navigate(['student/confirmation']);
-        });
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+      this.sendFormToServer();
+    });
   }
 
   public resetForm(): void {
@@ -51,4 +47,19 @@ export class AttendanceComponent implements OnInit {
     })
   }
 
+  private sendFormToServer(): void {
+    this._attendanceService.submitAttendance(
+      this.form.controls['passKey'].value,
+      this.form.controls['studentId'].value,
+      this._studentService.section,
+      this.latitude,
+      this.longitude
+    ).subscribe((response) => {
+      console.log(response);
+      console.log(response.name);
+      this._studentService.name = String(response.name);
+      this._studentService.studentId = this.form.controls['studentId'].value;
+      this._router.navigate(['student/confirmation']);
+    });
+  }
 }
