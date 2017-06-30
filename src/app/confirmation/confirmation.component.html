@@ -1,7 +1,7 @@
-<p>
-  confirmation works!
-</p>
-
-<div>
+<div *ngIf="success">
   Thank you {{studentName}} ({{studentId}}) for attending class :D.
+</div>
+
+<div *ngIf="!success">
+  There was an error with your submission, please try again or contact the professor.
 </div>

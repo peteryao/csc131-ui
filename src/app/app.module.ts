@@ -20,6 +20,7 @@ import { AttendanceService } from './attendance.service';
 import { SectionComponent } from './section/section.component';
 import { TeacherDialogComponent } from './teacher-dialog/teacher-dialog.component';
 import { TeacherService } from './teacher.service'
+import { LoadingService } from './loading.service';
 
 const appRoutes: Routes = [
   { path: 'student', component: StudentComponent,
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [StudentService, AttendanceService, TeacherService],
+  providers: [StudentService, AttendanceService, TeacherService, LoadingService],
   bootstrap: [AppComponent],
   entryComponents: [TeacherDialogComponent]
 })

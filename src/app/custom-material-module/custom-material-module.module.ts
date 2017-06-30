@@ -5,7 +5,9 @@ import {
   MdCheckboxModule,
   MdInputModule,
   MdToolbarModule,
-  MdDialogModule } from '@angular/material';
+  MdDialogModule,
+  MdProgressBarModule,
+ } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -13,14 +15,16 @@ import {
     MdCheckboxModule,
     MdInputModule,
     MdToolbarModule,
-    MdDialogModule
+    MdDialogModule,
+    MdProgressBarModule
   ],
   exports: [
     MdButtonModule,
     MdCheckboxModule,
     MdInputModule,
     MdToolbarModule,
-    MdDialogModule
+    MdDialogModule,
+    MdProgressBarModule
   ]
 })
 export class CustomMaterialModuleModule { }

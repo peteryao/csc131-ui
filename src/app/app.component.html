@@ -4,6 +4,7 @@
     <span> Attendance Tracker </span>
   </md-toolbar>
 </div>
+<md-progress-bar mode="indeterminate" *ngIf="loadingService.isLoading"></md-progress-bar>
 <div style="margin: 20px;">
   <button md-raised-button routerLink="/">Home</button>
   <button md-raised-button (click)="studentClick()" routerLink="/student">Student</button>
