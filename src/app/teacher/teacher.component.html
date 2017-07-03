@@ -1,41 +1,39 @@
-<p>
-  Teacher
-</p>
-<div *ngIf="!validTeacher">
-  <md-input-container>
-  <input mdInput placeholder="Teacher Password" [(ngModel)]="password" type="password">
-  </md-input-container>
-  <button md-raised-button (click)="checkTeacher()">Login</button>
-</div>
-
-<div *ngIf="validTeacher">
-<p> Please submit a form key </p>
-
-<form [formGroup]="form">
-  <p>
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 90%;">
+  <div *ngIf="!validTeacher">
     <md-input-container>
-      <input mdInput placeholder="Daily Key" formControlName="passKey">
-      <md-error class="text-danger">
-        PassKey required
-      </md-error>
+    <input mdInput placeholder="Teacher Password" [(ngModel)]="password" type="password">
     </md-input-container>
-  </p>
-  <p>
-    <md-input-container>
-      <input mdInput placeholder="Section" formControlName="sectionNumber">
-      <md-error class="text-danger">
-        PassKey required
-      </md-error>
-    </md-input-container>
-  </p>
-  <div>
-    <button type="button" md-raised-button (click)="randomKey()">Random</button>
-    <button type="button" md-raised-button (click)="resetForm()">Reset</button>
-    <button md-raised-button (click)="submitForm()" [disabled]="!form.valid">Submit</button>
+    <button md-raised-button (click)="checkTeacher()">Login</button>
   </div>
-</form>
-</div>
-<div>
-  <button md-raised-button (click)="getCurrentKey()">Get Current Key</button>
-  <div *ngIf="key !== null">{{key}}</div>
+
+  <div *ngIf="validTeacher">
+    <p> Please submit a form key </p>
+    <form [formGroup]="form">
+      <p>
+        <md-input-container>
+          <input mdInput placeholder="Daily Key" formControlName="passKey">
+          <md-error class="text-danger">
+            PassKey required
+          </md-error>
+        </md-input-container>
+      </p>
+      <p>
+        <md-input-container>
+          <input mdInput placeholder="Section" formControlName="sectionNumber">
+          <md-error class="text-danger">
+            PassKey required
+          </md-error>
+        </md-input-container>
+      </p>
+      <div>
+        <button type="button" md-raised-button (click)="randomKey()">Random</button>
+        <button type="button" md-raised-button (click)="resetForm()">Reset</button>
+        <button md-raised-button (click)="submitForm()" [disabled]="!form.valid">Submit</button>
+      </div>
+    </form>
+    <div>
+      <button md-raised-button (click)="getCurrentKey()">Get Current Key</button>
+      <div *ngIf="key !== null">{{key}}</div>
+    </div>
+  </div>
 </div>

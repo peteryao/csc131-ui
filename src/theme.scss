@@ -1,0 +1,37 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-sac: (
+    50 : #e1e7e5,
+    100 : #b4c4be,
+    200 : #829c93,
+    300 : #4f7468,
+    400 : #2a5747,
+    500 : #043927,
+    600 : #033323,
+    700 : #032c1d,
+    800 : #022417,
+    900 : #01170e,
+    A100 : #57ff9d,
+    A200 : #24ff7f,
+    A400 : #00f064,
+    A700 : #00d659,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
