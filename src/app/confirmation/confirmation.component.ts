@@ -29,6 +29,8 @@ export class ConfirmationComponent implements OnInit {
       return 'The key you submitted is invalid, please try again or contact your professor.';
     } else if (this.message === 'Already Sumbitted') {
       return 'You have already checked in. If you believe this is incorrect, please contact your professor.';
+    } else if (this.message === 'Invalid Student Id') {
+      return 'The Student ID you provided was not found. Please try again or contract your professor.'
     } else {
       return 'There was an error with your submission, please try again or contact your professor.';
     }

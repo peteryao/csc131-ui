@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Jsonp } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 export class AttendanceService {
   private restUrl = 'https://attend-rest.herokuapp.com';
 
-  constructor(private http: Http, private jsonp: Jsonp) {}
+  constructor(private http: Http) {}
 
   getKey(): Observable<JSON> {
     return this.http
