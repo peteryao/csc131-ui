@@ -11,19 +11,18 @@
     <form [formGroup]="form">
       <p>
         <md-input-container>
-          <input mdInput placeholder="Daily Key" formControlName="passKey">
+          <input mdInput placeholder="Daily Key" formControlName="passKey" autocomplete="off">
           <md-error class="text-danger">
             PassKey required
           </md-error>
         </md-input-container>
       </p>
       <p>
-        <md-input-container>
-          <input mdInput placeholder="Section" formControlName="sectionNumber">
-          <md-error class="text-danger">
-            Section Number Required
-          </md-error>
-        </md-input-container>
+        <md-select placeholder="CSC 131" formControlName="sectionNumber" name="food">
+          <md-option *ngFor="let section of sections" [value]="section">
+            Section {{section}}
+          </md-option>
+        </md-select>
       </p>
       <div>
         <button type="button" md-raised-button (click)="randomKey()">Random</button>

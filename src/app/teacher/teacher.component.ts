@@ -17,6 +17,7 @@ export class TeacherComponent implements OnInit {
   public section: number;
   public validTeacher: boolean;
   public password: string;
+  public sections = [1, 2]
 
   constructor( private attendanceService: AttendanceService, public dialog: MdDialog ) {};
 

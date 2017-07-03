@@ -1,7 +1,9 @@
-<div *ngIf="success">
-  Thank you {{studentName}} ({{studentId}}) for attending class :D.
-</div>
+<div fxLayout="column" fxLayoutAlign="space-around center" style="height: 90%;">
+  <div *ngIf="success">
+    Thank you {{studentName}} ({{studentId}}) for attending class :D.
+  </div>
 
-<div *ngIf="!success">
-  There was an error with your submission, please try again or contact the professor.
+  <div *ngIf="!success">
+    {{userFeedback()}}
+  </div>
 </div>

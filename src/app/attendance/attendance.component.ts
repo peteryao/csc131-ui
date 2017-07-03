@@ -66,6 +66,7 @@ export class AttendanceComponent implements OnInit {
       this._studentService.name = String(response.name);
       this._studentService.success = this.isSuccess(response.result);
       this._studentService.studentId = this.form.controls['studentId'].value;
+      this._studentService.message = response.result;
       this._loadingSerice.isLoading = false;
       this._router.navigate(['student/confirmation']);
     });

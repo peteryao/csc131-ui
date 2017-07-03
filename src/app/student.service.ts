@@ -6,6 +6,7 @@ export class StudentService {
   section: number;
   name: string;
   success = false;
+  message: string;
 
   constructor() {
     this.studentId = 999999999;
