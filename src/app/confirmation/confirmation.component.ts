@@ -12,6 +12,7 @@ export class ConfirmationComponent implements OnInit {
   studentName: string;
   success: boolean;
   message: string;
+  allowLocation: boolean;
 
   constructor( private _studentService: StudentService ) { }
 
@@ -20,6 +21,7 @@ export class ConfirmationComponent implements OnInit {
     this.studentName = this._studentService.name;
     this.success = this._studentService.success;
     this.message = this._studentService.message;
+    this.allowLocation = this._studentService.allowLocation;
   }
 
   public userFeedback(): string {

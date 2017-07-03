@@ -35,6 +35,7 @@ export class AttendanceComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.latitude = position.coords.latitude.toFixed(2);
       this.longitude = position.coords.longitude.toFixed(2);
+      this._studentService.allowLocation = true;
       this.sendFormToServer();
     }, (error) => {
       // This occurs when the user prevents the application from accessing the geolocation service

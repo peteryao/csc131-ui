@@ -7,6 +7,7 @@ export class StudentService {
   name: string;
   success = false;
   message: string;
+  allowLocation = false;
 
   constructor() {
     this.studentId = 999999999;

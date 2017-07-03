@@ -1,4 +1,10 @@
-<div fxLayout="column" fxLayoutAlign="space-around center" style="height: 90%;">
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 90%;">
+  <div *ngIf="!allowLocation" style="width: 500px; margin-bottom: 15px;">
+    <p style="color: red;">
+    Location is disabled on your device, which will effect your attendance. Please contact the professor to make sure you are marked properly.
+    </p>
+  </div>
+
   <div *ngIf="success">
     Thank you {{studentName}} ({{studentId}}) for attending class :D.
   </div>
