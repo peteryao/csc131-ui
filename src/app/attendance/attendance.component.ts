@@ -36,6 +36,11 @@ export class AttendanceComponent implements OnInit {
       this.latitude = position.coords.latitude.toFixed(2);
       this.longitude = position.coords.longitude.toFixed(2);
       this.sendFormToServer();
+    }, (error) => {
+      // This occurs when the user prevents the application from accessing the geolocation service
+      this.latitude = 91.00;    // +1 greater than the maximum possible latitude
+      this.longitude = 181.00;  // +1 greater than the maximum possible longitude
+      this.sendFormToServer();
     });
   }
 
@@ -58,8 +63,6 @@ export class AttendanceComponent implements OnInit {
       Number(this.latitude),
       Number(this.longitude)
     ).subscribe((response) => {
-      console.log(response);
-      console.log(response.name);
       this._studentService.name = String(response.name);
       this._studentService.success = this.isSuccess(response.result);
       this._studentService.studentId = this.form.controls['studentId'].value;

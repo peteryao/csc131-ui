@@ -7,7 +7,7 @@
   </div>
 
   <div *ngIf="validTeacher">
-    <p> Please submit a form key </p>
+    <h4> Please submit a form key </h4>
     <form [formGroup]="form">
       <p>
         <md-input-container>
@@ -21,7 +21,7 @@
         <md-input-container>
           <input mdInput placeholder="Section" formControlName="sectionNumber">
           <md-error class="text-danger">
-            PassKey required
+            Section Number Required
           </md-error>
         </md-input-container>
       </p>
