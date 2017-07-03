@@ -26,12 +26,13 @@ export class TeacherDialogComponent implements OnInit {
   }
 
   public activeKeys(): boolean {
-    for (const section in this.keyList) {
-      if (section[1] !== null) {
-        return true;
+    let active = false;
+    for (const section of this.keyList) {
+      if (section[1]) {
+        active = true;
       }
     }
-    return false;
+    return active;
   }
 
   private determineSection(input: string): string {
