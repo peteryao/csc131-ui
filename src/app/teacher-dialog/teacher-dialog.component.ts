@@ -25,6 +25,15 @@ export class TeacherDialogComponent implements OnInit {
     });
   }
 
+  public activeKeys(): boolean {
+    for (const section in this.keyList) {
+      if (section[1] !== null) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private determineSection(input: string): string {
     if (input === 'key1') {
       return 'CSC131 - 1';

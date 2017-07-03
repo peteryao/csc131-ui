@@ -31,7 +31,7 @@
         <button md-raised-button (click)="submitForm()" [disabled]="!form.valid">Submit</button>
       </div>
     </form>
-    <div>
+    <div style="margin-top: 25px;">
       <button md-raised-button (click)="getCurrentKey()">Get Current Key</button>
       <div *ngIf="key !== null">{{key}}</div>
     </div>
